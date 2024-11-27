@@ -12,7 +12,7 @@
     "ahooks": "^3.8.1",
     "antd": "^5.22.2",
     "context-state": "^3.1.2",
-    "keepalive-react-router": "workspace:*",
+    "keepalive-react-router": "latest",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "6.27.0",
@@ -26,6 +26,6 @@
     "tailwindcss": "^3.4.15",
     "typescript": "^5.7.2",
     "vite": "^5.4.11",
-    "vite-plugin-remix-flat-routes": "latest"
+    "vite-plugin-remix-flat-routes": "^4.4.0"
   }
 }

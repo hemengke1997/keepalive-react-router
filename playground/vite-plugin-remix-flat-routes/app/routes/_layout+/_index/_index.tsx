@@ -1,28 +1,28 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Button, Card, Modal, Space } from 'antd'
-import { useActivated, useDeactivated, useKeepAlive } from 'keepalive-react-router'
-import LoadMore from '../../components/load-more'
-import { GlobalContext } from '../../contexts/global-context'
+import { App, Button, Card, Modal, Space } from 'antd'
+import { useActivated, useDeactivated } from 'keepalive-react-router'
+import LoadMore from '../../../components/load-more'
+import { GlobalContext } from '../../../contexts/global-context'
 
 export const handle = {
   keepAlive: true,
 }
 
 export default function Page() {
-  const [count, setCount] = useState(0)
+  const { message } = App.useApp()
 
+  const [count, setCount] = useState(0)
   const { globalCount, setGlobalCount } = GlobalContext.usePicker(['globalCount', 'setGlobalCount'])
-  const { getAliveRoutes, destroyAll } = useKeepAlive()
 
   console.log('index --- render')
 
   useActivated(() => {
-    console.log('index --- actived')
+    message.info('首页激活！')
   })
 
   useDeactivated(() => {
-    console.log('index --- deactived')
+    message.info('首页失活！')
   })
 
   const [modalOpen, setModalOpen] = useState(false)
@@ -30,23 +30,15 @@ export default function Page() {
   return (
     <div className={'h-screen'}>
       <Card title={'首页 KeepAlive'}>
-        <div className={'flex gap-2'}>
+        <div className={'mb-6 flex gap-2'}>
           <Button
             onClick={() => {
               setCount(count + 1)
             }}
           >
-            +1 {count}
+            触发渲染 {count}
           </Button>
           <Button onClick={() => setModalOpen(true)}>打开modal</Button>
-          <Button
-            onClick={() => {
-              console.log(getAliveRoutes())
-            }}
-          >
-            输出已缓存路由
-          </Button>
-          <Button onClick={() => destroyAll()}>清除所有路由缓存</Button>
           <Button
             onClick={() => {
               setGlobalCount((t) => t + 1)
@@ -55,8 +47,8 @@ export default function Page() {
             GlobalCount: {globalCount}
           </Button>
         </div>
+        <LoadMore />
       </Card>
-      <LoadMore />
       <Modal
         open={modalOpen}
         title={'首页'}

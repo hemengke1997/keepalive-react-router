@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import { Outlet } from 'react-router-dom'
-import { Button, Card, Space } from 'antd'
-import { useActivated, useDeactivated, useKeepAlive } from 'keepalive-react-router'
-import { GlobalContext } from '../../../contexts/global-context'
+import { App, Button, Card, Space } from 'antd'
+import { useActivated, useDeactivated } from 'keepalive-react-router'
+import { GlobalContext } from '../../../../contexts/global-context'
 
 export default function Page() {
+  const { message } = App.useApp()
+
   const [count, setCount] = useState(0)
 
   const { globalCount, setGlobalCount } = GlobalContext.usePicker(['globalCount', 'setGlobalCount'])
@@ -12,14 +14,12 @@ export default function Page() {
   console.log('signin --- render')
 
   useActivated(() => {
-    console.log('signin --- actived')
+    message.info('登录页激活！')
   })
 
   useDeactivated(() => {
-    console.log('signin --- deactived')
+    message.info('登录页失活！')
   })
-
-  const { destroyAll } = useKeepAlive()
 
   return (
     <div className={'min-h-screen'}>
@@ -30,11 +30,10 @@ export default function Page() {
               setCount(count + 1)
             }}
           >
-            点击count+ {count}
+            触发渲染 {count}
           </Button>
 
-          <Button onClick={() => destroyAll()}>清除所有路由缓存</Button>
-          <Button onClick={() => setGlobalCount((t) => t - 1)}>GlobalCount: {globalCount}</Button>
+          <Button onClick={() => setGlobalCount((t) => t + 1)}>GlobalCount: {globalCount}</Button>
         </Space>
       </Card>
       <Outlet />

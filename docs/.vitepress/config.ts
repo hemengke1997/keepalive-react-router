@@ -106,4 +106,5 @@ export default defineConfig({
     },
     logo: '/logo.svg',
   },
+  head: [['link', { rel: 'icon', href: '/logo.svg' }]],
 })
