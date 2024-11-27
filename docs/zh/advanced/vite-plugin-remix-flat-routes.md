@@ -45,3 +45,5 @@ export default function Page() {
 ```
 
 就这么简单。
+
+更多详情请参照 [示例](https://github.com/hemengke1997/keepalive-react-router/tree/master/playground/vite-plugin-remix-flat-routes)

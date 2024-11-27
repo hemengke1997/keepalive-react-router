@@ -79,3 +79,5 @@ const router = createBrowserRouter(
 Now, the `Dashboard` route component will be cached.
 
 KeepAlive, it's that simple!
+
+For more details, please refer to the [example](https://github.com/hemengke1997/keepalive-react-router/tree/master/playground/react-router).

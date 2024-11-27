@@ -12,7 +12,7 @@ export default defineConfig({
         nav: [
           {
             text: 'Example',
-            link: '',
+            link: 'https://github.com/hemengke1997/keepalive-react-router/tree/master/playground',
           },
         ],
         sidebar: [
@@ -56,7 +56,7 @@ export default defineConfig({
         nav: [
           {
             text: '示例',
-            link: '',
+            link: 'https://github.com/hemengke1997/keepalive-react-router/tree/master/playground',
           },
         ],
         sidebar: [

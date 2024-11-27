@@ -79,3 +79,5 @@ const router = createBrowserRouter(
 现在，`Dashboard` 路由组件就会被缓存了。
 
 KeepAlive，就是这么简单！
+
+更多详情请参照 [示例](https://github.com/hemengke1997/keepalive-react-router/tree/master/playground/react-router)
