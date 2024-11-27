@@ -28,7 +28,7 @@ export default function Page() {
   const [modalOpen, setModalOpen] = useState(false)
 
   return (
-    <div className={'h-screen'}>
+    <div className={'min-h-screen'}>
       <Card title={'首页 KeepAlive'}>
         <div className={'mb-6 flex gap-2'}>
           <Button

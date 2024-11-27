@@ -114,5 +114,5 @@ export default defineConfig({
     },
     logo: '/logo.svg',
   },
-  head: [['link', { rel: 'icon', href: '/logo.svg' }]],
+  head: [['link', { rel: 'icon', href: '/keepalive-react-router/logo.svg' }]],
 })
