@@ -14,6 +14,10 @@ export default defineConfig({
             text: 'Example',
             link: 'https://github.com/hemengke1997/keepalive-react-router/tree/master/playground',
           },
+          {
+            text: 'Online Demo',
+            link: 'https://keepalive-react-router.vercel.app/',
+          },
         ],
         sidebar: [
           {
@@ -57,6 +61,10 @@ export default defineConfig({
           {
             text: '示例',
             link: 'https://github.com/hemengke1997/keepalive-react-router/tree/master/playground',
+          },
+          {
+            text: '在线演示',
+            link: 'https://keepalive-react-router.vercel.app/',
           },
         ],
         sidebar: [
