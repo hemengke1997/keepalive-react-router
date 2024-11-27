@@ -1,0 +1,9 @@
+{
+  "extends": "@minko-fe/tsconfig/tsconfig.lib",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "strictNullChecks": true,
+    "noImplicitAny": false
+  },
+  "exclude": ["node_modules", "dist"]
+}

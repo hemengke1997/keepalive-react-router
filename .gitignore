@@ -1,0 +1,15 @@
+.DS_Store
+.idea
+*.cpuprofile
+*.local
+*.log
+dist
+explorations
+node_modules
+temp
+temp/*
+.eslintcache
+coverage
+temp-*
+docs/.vitepress/dist
+docs/.vitepress/cache

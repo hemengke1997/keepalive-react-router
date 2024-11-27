@@ -1,0 +1,15 @@
+@import 'antd/dist/reset.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;
+
+[data-theme='dark'] {
+  background-color: #000;
+  color: #fff;
+}
+
+body {
+  @apply min-h-screen;
+}
