@@ -45,7 +45,7 @@
     "react": ">=18",
     "react-dom": ">=18",
     "react-router-dom": ">=6.4",
-    "react-transition-preset": "^2.1.0"
+    "react-transition-preset": "^2.2.0"
   },
   "peerDependenciesMeta": {
     "react-transition-preset": {

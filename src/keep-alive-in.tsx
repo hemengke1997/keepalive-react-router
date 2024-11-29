@@ -1,30 +1,22 @@
 import { useLocation, useMatches, useOutlet } from 'react-router-dom'
 import { KeepAliveContext } from './contexts/keep-alive'
-import { useAsyncEffect } from './hooks/use-async-effect'
+import { useIsomorphicLayoutEffect } from './hooks/use-isomorphic-layout-effect'
 import OffScreen from './off-screen'
-import { OnScreen } from './on-screen'
-import { isFunction } from './utils'
+import OnScreen from './on-screen'
 
 function KeepAliveIn() {
   const { aliveRoutes, setAliveRoutes } = KeepAliveContext.usePicker(['aliveRoutes', 'setAliveRoutes'])
-  const outLet = useOutlet()
+  const outlet = useOutlet()
   const { pathname } = useLocation()
   const matches = useMatches()
 
-  useAsyncEffect(async () => {
+  useIsomorphicLayoutEffect(() => {
     let shouldKeepAlive = false
     for (let i = 0; i < matches.length; i++) {
       const match = matches[i]
-      const handle = match.handle
+      const handle = match.handle as { keepAlive: boolean } | undefined
       if (!handle) continue
-
-      let resolvedHandle: { keepAlive: boolean } | undefined = undefined
-      if (isFunction(handle)) {
-        resolvedHandle = await handle()
-      } else {
-        resolvedHandle = handle as { keepAlive: boolean }
-      }
-      if (resolvedHandle?.keepAlive) {
+      if (handle?.keepAlive) {
         shouldKeepAlive = true
         break
       }
@@ -32,9 +24,9 @@ function KeepAliveIn() {
 
     const current = aliveRoutes.get(pathname)
 
-    if (!current || shouldKeepAlive !== current.shouldKeepAlive) {
+    if (!current || current.shouldKeepAlive !== shouldKeepAlive) {
       setAliveRoutes(pathname, {
-        component: outLet,
+        component: shouldKeepAlive ? outlet : null,
         shouldKeepAlive,
       })
     }
@@ -49,7 +41,7 @@ function KeepAliveIn() {
           </OffScreen>
         ) : (
           <OnScreen key={key} mounted={pathname === key}>
-            {route.component}
+            {outlet}
           </OnScreen>
         ),
       )}
