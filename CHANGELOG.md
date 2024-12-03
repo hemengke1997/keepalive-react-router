@@ -1,3 +1,12 @@
+# [1.1.0](https://github.com/hemengke1997/keepalive-react-router/compare/v1.0.1...v1.1.0) (2024-12-03)
+
+
+### Features
+
+* useKey ([5d33a66](https://github.com/hemengke1997/keepalive-react-router/commit/5d33a66d3014b687cf604e045906f0f123eaec12))
+
+
+
 ## [1.0.1](https://github.com/hemengke1997/keepalive-react-router/compare/v1.0.0...v1.0.1) (2024-11-29)
 
 
