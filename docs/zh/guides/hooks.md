@@ -65,3 +65,21 @@ export default function Page() {
 - **类型**: `() => string[]`
 
 获取所有缓存的路由。
+
+## useKey
+
+- **类型**: `function useKey(): string`
+
+返回一个变化的`key`，用于刷新组件。由于 `KeepAlive` 会缓存路由快照，因此失活时，如果路由中有组件动画，则会导致激活时动画重新执行的问题。
+
+使用 `useKey`，会在缓存激活时，重新渲染组件，从而解决动画问题。
+
+```tsx
+import { useKey } from 'keepalive-react-router'
+
+export default function Page() {
+  const key = useKey()
+
+  return <div key={key}>Component</div>
+}
+```

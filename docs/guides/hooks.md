@@ -65,3 +65,21 @@ Destroys all route caches. If the current route is a `KeepAlive` route, it will 
 - **Type**: `() => string[]`
 
 Gets all cached routes.
+
+## useKey
+
+- **Type**: `function useKey(): string`
+
+Returns a changing `key` to refresh the component. Since `KeepAlive` caches route snapshots, if there are component animations in the route, it may cause the animations to re-execute when activated.
+
+Using `useKey` will re-render the component when the cache is activated, thus solving the animation issue.
+
+```tsx
+import { useKey } from 'react-router-keepalive-next'
+
+export default function Page() {
+  const key = useKey()
+
+  return <div key={key}>Component</div>
+}
+```

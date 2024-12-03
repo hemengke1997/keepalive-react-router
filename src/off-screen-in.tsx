@@ -1,12 +1,12 @@
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
 import type { ReactNode } from 'react'
 import { useMemoFn } from 'context-state'
+import { useIsomorphicLayoutEffect } from './hooks/use-isomorphic-layout-effect'
 import { type ActivityMode } from './types'
 
 export type OffScreenInProps = {
   mode: ActivityMode
-  pathname: string
-  children: ReactNode | ((mode: ActivityMode) => ReactNode)
+  children: ReactNode
 }
 
 export default function OffScreenIn(props: OffScreenInProps) {
@@ -22,7 +22,7 @@ export default function OffScreenIn(props: OffScreenInProps) {
     }
   })
 
-  useEffect(() => () => resolvePromise(true), [])
+  useIsomorphicLayoutEffect(() => () => resolvePromise(true), [])
 
   if (mode === 'hidden') {
     if (resolveRef.current === null) {
@@ -35,5 +35,5 @@ export default function OffScreenIn(props: OffScreenInProps) {
 
   resolvePromise()
 
-  return <>{typeof children === 'function' ? children(mode) : children}</>
+  return children
 }

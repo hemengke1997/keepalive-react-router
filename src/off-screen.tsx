@@ -1,10 +1,15 @@
-import { Suspense, useEffect, useRef } from 'react'
+import { Suspense, useRef } from 'react'
 import { useMemoFn } from 'context-state'
 import { useEventListener } from './hooks/use-event-listener'
+import { useIsomorphicLayoutEffect } from './hooks/use-isomorphic-layout-effect'
 import OffScreenIn, { type OffScreenInProps } from './off-screen-in'
 import { RouteTransition } from './route-transition'
 
-export default function OffScreen(props: OffScreenInProps) {
+export default function OffScreen(
+  props: OffScreenInProps & {
+    pathname: string
+  },
+) {
   const { mode, pathname } = props
 
   const { eventListener } = useEventListener()
@@ -21,7 +26,7 @@ export default function OffScreen(props: OffScreenInProps) {
     })
   })
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (mode === 'visible') {
       emitActiveChange()
     } else if (emitted.current) {
@@ -30,7 +35,7 @@ export default function OffScreen(props: OffScreenInProps) {
     }
   }, [mode])
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     return () => {
       emitActiveChange()
     }

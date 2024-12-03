@@ -7,7 +7,7 @@ import OnScreen from './on-screen'
 function KeepAliveIn() {
   const { aliveRoutes, setAliveRoutes } = KeepAliveContext.usePicker(['aliveRoutes', 'setAliveRoutes'])
   const outlet = useOutlet()
-  const { pathname } = useLocation()
+  const location = useLocation()
   const matches = useMatches()
 
   useIsomorphicLayoutEffect(() => {
@@ -22,25 +22,21 @@ function KeepAliveIn() {
       }
     }
 
-    const current = aliveRoutes.get(pathname)
-
-    if (!current || current.shouldKeepAlive !== shouldKeepAlive) {
-      setAliveRoutes(pathname, {
-        component: shouldKeepAlive ? outlet : null,
-        shouldKeepAlive,
-      })
-    }
-  }, [pathname])
+    setAliveRoutes(location.pathname, {
+      key: location.key,
+      shouldKeepAlive,
+    })
+  }, [location.pathname, location.key])
 
   return (
     <>
-      {Array.from(aliveRoutes).map(([key, route]) =>
+      {Array.from(aliveRoutes).map(([pathname, route]) =>
         route.shouldKeepAlive ? (
-          <OffScreen key={key} pathname={key} mode={pathname === key ? 'visible' : 'hidden'}>
-            {route.component}
+          <OffScreen key={route.key} pathname={pathname} mode={location.pathname === pathname ? 'visible' : 'hidden'}>
+            {outlet}
           </OffScreen>
         ) : (
-          <OnScreen key={key} mounted={pathname === key}>
+          <OnScreen key={route.key} mounted={location.pathname === pathname}>
             {outlet}
           </OnScreen>
         ),

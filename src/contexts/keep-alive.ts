@@ -6,7 +6,7 @@ function useKeepAlive() {
     Map<
       string,
       {
-        component: React.ReactElement | null
+        key: string
         shouldKeepAlive: boolean
       }
     >
