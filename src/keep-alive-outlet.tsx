@@ -4,7 +4,7 @@ import { KeepAliveInContext } from './contexts/keep-alive-in'
 import KeepAliveIn from './keep-alive-in'
 import { ScrollRestoration } from './scroll-restoration'
 
-export type KeepAliveProps = {
+export type KeepAliveOutletProps = {
   children?: React.ReactNode
   /**
    * @description Route transition
@@ -18,7 +18,7 @@ export type KeepAliveProps = {
   scrollRestoration?: ScrollRestorationProps | false
 }
 
-export function KeepAlive(props: KeepAliveProps) {
+export function KeepAliveOutlet(props: KeepAliveOutletProps) {
   const { transition = false, scrollRestoration, children } = props
 
   return (

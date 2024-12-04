@@ -1,7 +1,7 @@
 import { createContainer } from 'context-state'
-import { type KeepAliveProps } from '../keep-alive'
+import { type KeepAliveOutletProps } from '../keep-alive-outlet'
 
-function useKeepAliveIn(initialValue: Pick<KeepAliveProps, 'transition'>) {
+function useKeepAliveIn(initialValue: Pick<KeepAliveOutletProps, 'transition'>) {
   const { transition } = initialValue
 
   return {

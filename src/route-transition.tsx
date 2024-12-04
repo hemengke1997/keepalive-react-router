@@ -1,7 +1,7 @@
 import type React from 'react'
 import { lazy, Suspense } from 'react'
 import { KeepAliveInContext } from './contexts/keep-alive-in'
-import { type KeepAliveProps } from './keep-alive'
+import { type KeepAliveOutletProps } from './keep-alive-outlet'
 import { isObject } from './utils'
 
 const LazyTransition = lazy(() => import('react-transition-preset').then((module) => ({ default: module.Transition })))
@@ -9,7 +9,7 @@ const LazyTransition = lazy(() => import('react-transition-preset').then((module
 export function RouteTransition(props: {
   children: React.ReactNode
   mounted: boolean
-  transition: Exclude<KeepAliveProps['transition'], boolean>
+  transition: Exclude<KeepAliveOutletProps['transition'], boolean>
 }) {
   const { transition } = KeepAliveInContext.usePicker(['transition'])
   const { children, mounted, transition: transitionProps } = props

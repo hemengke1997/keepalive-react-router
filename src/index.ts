@@ -1,4 +1,4 @@
-export { KeepAlive } from './keep-alive'
+export { KeepAliveOutlet } from './keep-alive-outlet'
 export { KeepAliveProvider } from './contexts/keep-alive'
 export { useActivated } from './hooks/use-activated'
 export { useDeactivated } from './hooks/use-deactivated'

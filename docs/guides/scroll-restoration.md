@@ -5,13 +5,13 @@
 You can also control the scroll restoration behavior.
 
 ```tsx
-import { KeepAlive, KeepAliveProvider } from 'keepalive-react-router'
+import { KeepAliveOutlet, KeepAliveProvider } from 'keepalive-react-router'
 
 export function Root() {
   return (
     <>
       <KeepAliveProvider>
-        <KeepAlive 
+        <KeepAliveOutlet 
           scrollRestoration={
             // Custom scroll restoration behavior
           }

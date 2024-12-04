@@ -1,8 +1,8 @@
 import { type GetScrollRestorationKeyFunction, ScrollRestoration as RouterScrollRestoration } from 'react-router-dom'
 import { KeepAliveContext } from './contexts/keep-alive'
-import { type KeepAliveProps } from './keep-alive'
+import { type KeepAliveOutletProps } from './keep-alive-outlet'
 
-export function ScrollRestoration(props: { scrollRestoration?: KeepAliveProps['scrollRestoration'] }) {
+export function ScrollRestoration(props: { scrollRestoration?: KeepAliveOutletProps['scrollRestoration'] }) {
   const { scrollRestoration } = props
   const { aliveRoutes } = KeepAliveContext.usePicker(['aliveRoutes'])
 

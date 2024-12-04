@@ -12,18 +12,18 @@
 
 ### Root 根组件
 
-我们仍然需要在 `Root` 中引入 `KeepAlive`，并且移除 `Outlet`。
+我们仍然需要在 `Root` 中引入 `KeepAliveOutlet`，并且移除 `Outlet`。
 
 ```tsx
 // root.tsx
-import { KeepAlive, KeepAliveProvider } from 'keepalive-react-router'
+import { KeepAliveOutlet, KeepAliveProvider } from 'keepalive-react-router'
 
 export function Root() {
   return (
     <>
       <Outlet /> // [!code --]
       <KeepAliveProvider> // [!code ++]
-        <KeepAlive /> // [!code ++]
+        <KeepAliveOutlet /> // [!code ++]
       </KeepAliveProvider> // [!code ++]
     </>
   )

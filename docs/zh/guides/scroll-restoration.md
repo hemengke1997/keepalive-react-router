@@ -5,13 +5,13 @@
 你也可以控制滚动恢复行为
 
 ```tsx
-import { KeepAlive, KeepAliveProvider } from 'keepalive-react-router'
+import { KeepAliveOutlet, KeepAliveProvider } from 'keepalive-react-router'
 
 export function Root() {
   return (
     <>
       <KeepAliveProvider>
-        <KeepAlive 
+        <KeepAliveOutlet 
           scrollRestoration={
             // 自定义滚动恢复行为
           }

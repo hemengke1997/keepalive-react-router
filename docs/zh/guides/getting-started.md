@@ -41,20 +41,20 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 )
 ```
 
-然后，在 `Root` 根路由中，使用 `KeepAlive`，并且移除 `Ouelet`。
+然后，在 `Root` 根路由中，使用 `KeepAliveOutlet`，并且移除 `Ouelet`。
 
-需要注意的是，`KeepAlive` 必须包裹在 `KeepAliveProvider` 中。
+需要注意的是，`KeepAliveOutlet` 必须包裹在 `KeepAliveProvider` 中。
 
 ```tsx
 // root.tsx
-import { KeepAlive, KeepAliveProvider } from 'keepalive-react-router'
+import { KeepAliveOutlet, KeepAliveProvider } from 'keepalive-react-router'
 
 export function Root() {
   return (
     <>
       <Outlet /> // [!code --]
       <KeepAliveProvider> // [!code ++]
-        <KeepAlive /> // [!code ++]
+        <KeepAliveOutlet /> // [!code ++]
       </KeepAliveProvider> // [!code ++]
     </>
   )

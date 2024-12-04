@@ -16,14 +16,14 @@ We still need to introduce `KeepAlive` in the `Root` component and remove `Outle
 
 ```tsx
 // root.tsx
-import { KeepAlive, KeepAliveProvider } from 'keepalive-react-router'
+import { KeepAliveOutlet, KeepAliveProvider } from 'keepalive-react-router'
 
 export function Root() {
   return (
     <>
       <Outlet /> // [!code --]
       <KeepAliveProvider> // [!code ++]
-        <KeepAlive /> // [!code ++]
+        <KeepAliveOutlet /> // [!code ++]
       </KeepAliveProvider> // [!code ++]
     </>
   )

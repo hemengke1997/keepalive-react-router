@@ -43,18 +43,18 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 
 Then, in the `Root` route, use `KeepAlive` and remove `Outlet`.
 
-Note that `KeepAlive` must be wrapped in `KeepAliveProvider`.
+Note that `KeepAliveOutlet` must be wrapped in `KeepAliveProvider`.
 
 ```tsx
 // root.tsx
-import { KeepAlive, KeepAliveProvider } from 'keepalive-react-router'
+import { KeepAliveOutlet, KeepAliveProvider } from 'keepalive-react-router'
 
 export function Root() {
   return (
     <>
       <Outlet /> // [!code --]
       <KeepAliveProvider> // [!code ++]
-        <KeepAlive /> // [!code ++]
+        <KeepAliveOutlet /> // [!code ++]
       </KeepAliveProvider> // [!code ++]
     </>
   )
