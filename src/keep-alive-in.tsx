@@ -23,7 +23,6 @@ function KeepAliveIn() {
     }
 
     setAliveRoutes(location.pathname, {
-      key: location.key,
       shouldKeepAlive,
     })
   }, [location.pathname, location.key])
@@ -32,11 +31,11 @@ function KeepAliveIn() {
     <>
       {Array.from(aliveRoutes).map(([pathname, route]) =>
         route.shouldKeepAlive ? (
-          <OffScreen key={route.key} pathname={pathname} mode={location.pathname === pathname ? 'visible' : 'hidden'}>
+          <OffScreen key={pathname} pathname={pathname} mode={location.pathname === pathname ? 'visible' : 'hidden'}>
             {outlet}
           </OffScreen>
         ) : (
-          <OnScreen key={route.key} mounted={location.pathname === pathname}>
+          <OnScreen key={pathname} mounted={location.pathname === pathname}>
             {outlet}
           </OnScreen>
         ),

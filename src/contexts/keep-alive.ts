@@ -6,7 +6,6 @@ function useKeepAlive() {
     Map<
       string,
       {
-        key: string
         shouldKeepAlive: boolean
       }
     >
