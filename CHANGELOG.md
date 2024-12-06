@@ -1,3 +1,12 @@
+## [1.1.2](https://github.com/hemengke1997/keepalive-react-router/compare/v1.1.1...v1.1.2) (2024-12-06)
+
+
+### Bug Fixes
+
+* route key ([d3544d9](https://github.com/hemengke1997/keepalive-react-router/commit/d3544d9f9396741f206007f363c67d40d56b949b))
+
+
+
 ## [1.1.1](https://github.com/hemengke1997/keepalive-react-router/compare/v1.1.0...v1.1.1) (2024-12-04)
 
 
