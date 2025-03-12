@@ -1,3 +1,12 @@
+## [1.1.3](https://github.com/hemengke1997/keepalive-react-router/compare/v1.1.2...v1.1.3) (2025-03-12)
+
+
+### Bug Fixes
+
+* singleton event ([9124fc2](https://github.com/hemengke1997/keepalive-react-router/commit/9124fc2f94a74cde673740622313f9c32eb7ed6f))
+
+
+
 ## [1.1.2](https://github.com/hemengke1997/keepalive-react-router/compare/v1.1.1...v1.1.2) (2024-12-06)
 
 
