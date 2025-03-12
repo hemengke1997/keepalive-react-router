@@ -1,6 +1,6 @@
 import type React from 'react'
 import { lazy, Suspense } from 'react'
-import { KeepAliveInContext } from './contexts/keep-alive-in'
+import { KeepAliveInStore } from './contexts/keep-alive-in'
 import { type KeepAliveOutletProps } from './keep-alive-outlet'
 import { isObject } from './utils'
 
@@ -11,7 +11,7 @@ export function RouteTransition(props: {
   mounted: boolean
   transition: Exclude<KeepAliveOutletProps['transition'], boolean>
 }) {
-  const { transition } = KeepAliveInContext.usePicker(['transition'])
+  const { transition } = KeepAliveInStore.useStore(['transition'])
   const { children, mounted, transition: transitionProps } = props
 
   if (!transition) {

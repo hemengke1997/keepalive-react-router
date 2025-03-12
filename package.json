@@ -1,7 +1,7 @@
 {
   "name": "keepalive-react-router",
   "version": "1.1.2",
-  "packageManager": "pnpm@9.7.1",
+  "packageManager": "pnpm@9.15.9",
   "description": "Route-Level Keep-Alive for React Router",
   "type": "module",
   "keywords": [
@@ -53,27 +53,27 @@
     }
   },
   "dependencies": {
-    "context-state": "^3.2.0",
+    "context-state": "^4.0.1",
     "debounce": "^2.2.0",
     "eventemitter3": "^5.0.1"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.6.0",
+    "@commitlint/cli": "^19.8.0",
     "@minko-fe/commitlint-config": "^2.1.2",
-    "@minko-fe/eslint-config": "^4.1.1",
-    "@minko-fe/prettier-config": "^2.2.3",
+    "@minko-fe/eslint-config": "^4.2.1",
+    "@minko-fe/prettier-config": "^2.2.5",
     "@minko-fe/tsconfig": "^2.1.1",
-    "@types/react": "^18.3.12",
-    "bumpp": "^9.8.1",
+    "@types/react": "^18.3.18",
+    "bumpp": "^9.11.1",
     "conventional-changelog-cli": "^5.0.0",
-    "eslint": "^9.15.0",
-    "lint-staged": "^15.2.10",
-    "prettier-plugin-tailwindcss": "^0.6.9",
+    "eslint": "^9.22.0",
+    "lint-staged": "^15.4.3",
+    "prettier-plugin-tailwindcss": "^0.6.11",
     "simple-git-hooks": "^2.11.1",
     "tsup": "8.3.0",
-    "tsup-plugin-bundleless": "^1.2.0",
+    "tsup-plugin-bundleless": "^1.2.1",
     "typescript": "^5.7.2",
-    "vitepress": "^1.5.0"
+    "vitepress": "^1.6.3"
   },
   "simple-git-hooks": {
     "commit-msg": "npm run commitlint",

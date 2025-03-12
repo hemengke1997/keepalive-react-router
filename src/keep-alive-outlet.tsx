@@ -1,6 +1,6 @@
 import { type ScrollRestorationProps } from 'react-router-dom'
 import { type TransitionProps } from 'react-transition-preset'
-import { KeepAliveInContext } from './contexts/keep-alive-in'
+import { KeepAliveInStore } from './contexts/keep-alive-in'
 import KeepAliveIn from './keep-alive-in'
 import { ScrollRestoration } from './scroll-restoration'
 
@@ -23,15 +23,11 @@ export function KeepAliveOutlet(props: KeepAliveOutletProps) {
 
   return (
     <>
-      <KeepAliveInContext.Provider
-        value={{
-          transition,
-        }}
-      >
+      <KeepAliveInStore.Provider transition={transition}>
         <KeepAliveIn />
         <ScrollRestoration scrollRestoration={scrollRestoration} />
         {children}
-      </KeepAliveInContext.Provider>
+      </KeepAliveInStore.Provider>
     </>
   )
 }

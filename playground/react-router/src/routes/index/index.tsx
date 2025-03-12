@@ -1,9 +1,9 @@
+import { useActivated, useDeactivated, useKeepAlive } from 'keepalive-react-router'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Button, Card, Modal, Space } from 'antd'
-import { useActivated, useDeactivated, useKeepAlive } from 'keepalive-react-router'
 import LoadMore from '../../components/load-more'
-import { GlobalContext } from '../../contexts/global-context'
+import { GlobalStore } from '../../stores/global-store'
 
 export const handle = {
   keepAlive: true,
@@ -12,7 +12,7 @@ export const handle = {
 export default function Index() {
   const [count, setCount] = useState(0)
 
-  const { globalCount, setGlobalCount } = GlobalContext.usePicker(['globalCount', 'setGlobalCount'])
+  const { globalCount, setGlobalCount } = GlobalStore.useStore(['globalCount', 'setGlobalCount'])
   const { getAliveRoutes, destroyAll } = useKeepAlive()
 
   console.log('index --- render')

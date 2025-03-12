@@ -1,22 +1,23 @@
+import { KeepAliveOutlet, KeepAliveProvider } from 'keepalive-react-router'
 import { useRouteError } from 'react-router-dom'
 import { App } from 'antd'
-import { KeepAliveOutlet, KeepAliveProvider } from 'keepalive-react-router'
-import { GlobalContext } from './contexts/global-context'
+import { GlobalStore } from './stores/global-store'
+
+function Inner() {
+  const { enableScroll, enableTransition } = GlobalStore.useStore(['enableScroll', 'enableTransition'])
+  return (
+    <App>
+      <KeepAliveOutlet transition={enableTransition} scrollRestoration={enableScroll ? {} : false} />
+    </App>
+  )
+}
 
 export function Component() {
   return (
     <KeepAliveProvider>
-      <GlobalContext.Provider>
-        <GlobalContext.Consumer>
-          {({ enableScroll, enableTransition }) => (
-            <>
-              <App>
-                <KeepAliveOutlet transition={enableTransition} scrollRestoration={enableScroll ? {} : false} />
-              </App>
-            </>
-          )}
-        </GlobalContext.Consumer>
-      </GlobalContext.Provider>
+      <GlobalStore.Provider>
+        <Inner />
+      </GlobalStore.Provider>
     </KeepAliveProvider>
   )
 }

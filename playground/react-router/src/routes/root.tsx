@@ -1,8 +1,8 @@
+import { KeepAliveOutlet, KeepAliveProvider } from 'keepalive-react-router'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Button, Space } from 'antd'
-import { KeepAliveOutlet, KeepAliveProvider } from 'keepalive-react-router'
-import { GlobalContext } from '../contexts/global-context'
+import { GlobalStore } from '../stores/global-store'
 
 export default function Root() {
   const [enableScroll, setEnableScroll] = useState(true)
@@ -40,9 +40,9 @@ export default function Root() {
       </div>
       <>
         <KeepAliveProvider>
-          <GlobalContext.Provider>
+          <GlobalStore.Provider>
             <KeepAliveOutlet transition={enableTransition} scrollRestoration={enableScroll ? {} : false} />
-          </GlobalContext.Provider>
+          </GlobalStore.Provider>
         </KeepAliveProvider>
       </>
     </>

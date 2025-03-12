@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react'
 import { App, Button, Card, Space } from 'antd'
-import { GlobalContext } from '../../../../contexts/global-context'
+import { GlobalStore } from '../../../../stores/global-store'
 
 export default function Page() {
   const { message } = App.useApp()
 
   const [count, setCount] = useState(0)
 
-  const { globalCount, setGlobalCount } = GlobalContext.usePicker(['globalCount', 'setGlobalCount'])
+  const { globalCount, setGlobalCount } = GlobalStore.useStore(['globalCount', 'setGlobalCount'])
 
   console.log('signup --- render')
 

@@ -1,4 +1,4 @@
-import { createContainer } from 'context-state'
+import { createStore } from 'context-state'
 import { type KeepAliveOutletProps } from '../keep-alive-outlet'
 
 function useKeepAliveIn(initialValue: Pick<KeepAliveOutletProps, 'transition'>) {
@@ -9,4 +9,4 @@ function useKeepAliveIn(initialValue: Pick<KeepAliveOutletProps, 'transition'>) 
   }
 }
 
-export const KeepAliveInContext = createContainer(useKeepAliveIn)
+export const KeepAliveInStore = createStore(useKeepAliveIn)

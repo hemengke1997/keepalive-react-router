@@ -1,10 +1,10 @@
+import { useKeepAlive } from 'keepalive-react-router'
 import { Link, Outlet } from 'react-router-dom'
 import { App, Button, Card, Space } from 'antd'
-import { useKeepAlive } from 'keepalive-react-router'
-import { GlobalContext } from '../../contexts/global-context'
+import { GlobalStore } from '../../stores/global-store'
 
 export function Component() {
-  const { enableScroll, enableTransition, setEnableScroll, setEnableTransition } = GlobalContext.usePicker([
+  const { enableScroll, enableTransition, setEnableScroll, setEnableTransition } = GlobalStore.useStore([
     'setEnableScroll',
     'setEnableTransition',
     'enableScroll',

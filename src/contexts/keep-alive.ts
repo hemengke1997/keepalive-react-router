@@ -1,4 +1,4 @@
-import { createContainer } from 'context-state'
+import { createStore } from 'context-state'
 import { useMapState } from '../hooks/use-map-state'
 
 function useKeepAlive() {
@@ -18,6 +18,6 @@ function useKeepAlive() {
   }
 }
 
-export const KeepAliveContext = createContainer(useKeepAlive)
+export const KeepAliveStore = createStore(useKeepAlive)
 
-export const KeepAliveProvider = KeepAliveContext.Provider
+export const KeepAliveProvider = KeepAliveStore.Provider

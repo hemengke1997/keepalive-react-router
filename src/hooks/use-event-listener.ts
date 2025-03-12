@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import EventEmitter from 'eventemitter3'
+import { EventEmitter } from 'eventemitter3'
 import { type ActivityMode } from '../types'
 
 class KeepAliveEvent extends EventEmitter<Events> {

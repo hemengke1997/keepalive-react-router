@@ -1,12 +1,12 @@
 import { useLocation } from 'react-router-dom'
 import { useMemoFn } from 'context-state'
-import { KeepAliveContext } from '../contexts/keep-alive'
+import { KeepAliveStore } from '../contexts/keep-alive'
 import { ensureArray } from '../utils'
 import { useEventListener } from './use-event-listener'
 import { useUpdate } from './use-update'
 
 export function useKeepAlive() {
-  const { aliveRoutes, deleteAliveRoutes } = KeepAliveContext.usePicker(['aliveRoutes', 'deleteAliveRoutes'])
+  const { aliveRoutes, deleteAliveRoutes } = KeepAliveStore.useStore(['aliveRoutes', 'deleteAliveRoutes'])
 
   const { pathname } = useLocation()
 

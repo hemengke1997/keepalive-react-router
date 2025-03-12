@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { createContainer } from 'context-state'
+import { createStore } from 'context-state'
 
-function useGlobalContext() {
+function useGlobal() {
   const [globalCount, setGlobalCount] = useState(0)
 
   return {
@@ -10,4 +10,4 @@ function useGlobalContext() {
   }
 }
 
-export const GlobalContext = createContainer(useGlobalContext)
+export const GlobalStore = createStore(useGlobal)

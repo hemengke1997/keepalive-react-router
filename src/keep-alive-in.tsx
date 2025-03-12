@@ -1,11 +1,11 @@
 import { useLocation, useMatches, useOutlet } from 'react-router-dom'
-import { KeepAliveContext } from './contexts/keep-alive'
+import { KeepAliveStore } from './contexts/keep-alive'
 import { useIsomorphicLayoutEffect } from './hooks/use-isomorphic-layout-effect'
 import OffScreen from './off-screen'
 import OnScreen from './on-screen'
 
 function KeepAliveIn() {
-  const { aliveRoutes, setAliveRoutes } = KeepAliveContext.usePicker(['aliveRoutes', 'setAliveRoutes'])
+  const { aliveRoutes, setAliveRoutes } = KeepAliveStore.useStore(['aliveRoutes', 'setAliveRoutes'])
   const outlet = useOutlet()
   const location = useLocation()
   const matches = useMatches()
