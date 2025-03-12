@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect } from 'react'
 import { EventEmitter } from 'eventemitter3'
 import { type ActivityMode } from '../types'
 
@@ -32,16 +32,16 @@ type Events = {
   ]
 }
 
-export function useEventListener(events?: { on?: Ev<Events>; once?: Ev<Events> }) {
-  const ref = useRef<KeepAliveEvent>(KeepAliveEvent.getInstance())
+const instance = KeepAliveEvent.getInstance()
 
+export function useEventListener(events?: { on?: Ev<Events>; once?: Ev<Events> }) {
   useEffect(() => {
     const hanleEvent = (type: 'on' | 'off') => {
       if (events) {
         Object.keys(events).forEach((key) => {
           if (events[key]) {
             for (const eventName in events[key]) {
-              ref.current[type](eventName as keyof Events, events[key][eventName])
+              instance[type](eventName as keyof Events, events[key][eventName])
             }
           }
         })
@@ -63,6 +63,6 @@ export function useEventListener(events?: { on?: Ev<Events>; once?: Ev<Events> }
   }, [])
 
   return {
-    eventListener: ref.current,
+    eventListener: instance,
   }
 }
