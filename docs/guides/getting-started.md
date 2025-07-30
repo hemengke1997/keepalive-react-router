@@ -52,10 +52,14 @@ import { KeepAliveOutlet, KeepAliveProvider } from 'keepalive-react-router'
 export function Root() {
   return (
     <>
-      <Outlet /> // [!code --]
-      <KeepAliveProvider> // [!code ++]
-        <KeepAliveOutlet /> // [!code ++]
-      </KeepAliveProvider> // [!code ++]
+      {/* [!code --] */}
+      <Outlet />
+      {/* [!code ++] */}
+      <KeepAliveProvider>
+        {/* [!code ++] */}
+        <KeepAliveOutlet />
+        {/* [!code ++] */}
+      </KeepAliveProvider>
     </>
   )
 }
@@ -67,7 +71,9 @@ Finally, define `keepAlive` in the route component!
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Root />}>
-      <Route path="dashboard" element={<Dashboard />} 
+      <Route 
+        path="dashboard" 
+        element={<Dashboard />} 
         handle={{ keepAlive: true }} // [!code ++]
       />
       {/* ... etc. */}

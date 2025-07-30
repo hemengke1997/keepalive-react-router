@@ -21,10 +21,14 @@ import { KeepAliveOutlet, KeepAliveProvider } from 'keepalive-react-router'
 export function Root() {
   return (
     <>
-      <Outlet /> // [!code --]
-      <KeepAliveProvider> // [!code ++]
-        <KeepAliveOutlet /> // [!code ++]
-      </KeepAliveProvider> // [!code ++]
+      {/* [!code --] */}
+      <Outlet />
+      {/* [!code ++] */}
+      <KeepAliveProvider>
+        {/* [!code ++] */}
+        <KeepAliveOutlet />
+        {/* [!code ++] */}
+      </KeepAliveProvider>
     </>
   )
 }

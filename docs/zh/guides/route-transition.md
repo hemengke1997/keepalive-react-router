@@ -24,7 +24,8 @@ export function Root() {
   return (
     <>
       <KeepAliveProvider>
-        <KeepAliveOutlet transition={true} /> // [!code focus]
+        {/* [!code focus] */}
+        <KeepAliveOutlet transition={true} />
       </KeepAliveProvider>
     </>
   )
