@@ -1,5 +1,5 @@
 import { useActivated, useDeactivated } from 'keepalive-react-router'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Outlet } from 'react-router-dom'
 import { App, Button, Card, Space } from 'antd'
 import { GlobalStore } from '../../../../stores/global-store'
@@ -20,6 +20,13 @@ export default function Page() {
   useDeactivated(() => {
     message.info('登录页失活！')
   })
+
+  useEffect(() => {
+    console.log('登录页 Mounted')
+    return () => {
+      console.log('登录页 Unmounted')
+    }
+  }, [])
 
   return (
     <div className={'min-h-screen'}>
