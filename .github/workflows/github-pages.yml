@@ -1,37 +1,88 @@
-name: Github Pages Deploy
+name: Deploy to GitHub Pages
 
 on:
   push:
-    branches:
-      - master
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          persist-credentials: false
+          node-version: '18'
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v3
-
-      - name: Install Dependencies
-        run: |
-          pnpm install
-
-      - name: Build
-        run: |
-          pnpm run build:pages
-
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@releases/v3
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
         with:
-          ACCESS_TOKEN: ${{ secrets.GHB_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: playground/react-router/dist
+          version: 10.14.0
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build docs
+        run: pnpm run docs:build
+
+      - name: Build playground
+        run: |
+          cd playground/react-router
+          pnpm run build
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Prepare deployment
+        run: |
+          # 创建部署目录
+          mkdir -p dist
+          # 复制文档到根目录
+          cp -r docs/.vitepress/dist/* dist/
+          # 创建 playground 目录并复制文件
+          mkdir -p dist/playground
+          cp -r playground/react-router/dist/* dist/playground/
+          # 为 playground 创建 404.html 处理 SPA 路由
+          cat > dist/playground/404.html << 'EOF'
+          <!DOCTYPE html>
+          <html>
+          <head>
+              <meta charset="utf-8">
+              <title>Playground</title>
+              <script type="text/javascript">
+                  var pathSegmentsToKeep = 1;
+                  var l = window.location;
+                  l.replace(
+                      l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+                      l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
+                      l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+                      (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+                      l.hash
+                  );
+              </script>
+          </head>
+          <body>
+          </body>
+          </html>
+          EOF
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

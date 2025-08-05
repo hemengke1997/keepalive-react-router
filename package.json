@@ -37,8 +37,7 @@
     "bump": "bumpp package.json -c --no-push -t --all -x \"npm run changelog\"",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs",
-    "build:pages": "pnpm run build && cd playground/react-router && pnpm run build"
+    "docs:preview": "vitepress preview docs"
   },
   "peerDependencies": {
     "react": ">=18",
