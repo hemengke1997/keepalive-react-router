@@ -1,3 +1,17 @@
+# [1.2.0](https://github.com/hemengke1997/keepalive-react-router/compare/v1.1.3...v1.2.0) (2025-08-05)
+
+
+### Bug Fixes
+
+* typo ([1f59909](https://github.com/hemengke1997/keepalive-react-router/commit/1f59909c85580df7161a59810b663e29a8671afe))
+
+
+### Features
+
+* support latest react-transition-preset ([0a75641](https://github.com/hemengke1997/keepalive-react-router/commit/0a756413b987dad66fb5aea66f650ca63de449bf))
+
+
+
 ## [1.1.3](https://github.com/hemengke1997/keepalive-react-router/compare/v1.1.2...v1.1.3) (2025-03-12)
 
 
