@@ -1,8 +1,9 @@
-import { useEffect, type useLayoutEffect, useRef } from 'react'
+import type { useLayoutEffect } from 'react'
+import { useEffect, useRef } from 'react'
 
 type EffectHookType = typeof useEffect | typeof useLayoutEffect
 
-const createUpdateEffect: (hook: EffectHookType) => EffectHookType = (hook) => (effect, deps) => {
+const createUpdateEffect: (hook: EffectHookType) => EffectHookType = hook => (effect, deps) => {
   const isMounted = useRef(false)
 
   // for react-refresh
@@ -15,7 +16,8 @@ const createUpdateEffect: (hook: EffectHookType) => EffectHookType = (hook) => (
   hook(() => {
     if (!isMounted.current) {
       isMounted.current = true
-    } else {
+    }
+    else {
       return effect()
     }
   }, deps)

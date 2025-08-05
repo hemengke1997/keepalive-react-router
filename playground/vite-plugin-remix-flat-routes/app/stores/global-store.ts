@@ -1,5 +1,5 @@
-import { useState } from 'react'
 import { createStore } from 'context-state'
+import { useState } from 'react'
 
 function useGlobal() {
   const [globalCount, setGlobalCount] = useState(0)

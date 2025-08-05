@@ -1,8 +1,8 @@
-import { useRef } from 'react'
 import type { ReactNode } from 'react'
+import type { ActivityMode } from './types'
 import { useMemoFn } from 'context-state'
+import { useRef } from 'react'
 import { useIsomorphicLayoutEffect } from './hooks/use-isomorphic-layout-effect'
-import { type ActivityMode } from './types'
 
 export type OffScreenInProps = {
   mode: ActivityMode
@@ -26,7 +26,7 @@ export default function OffScreenIn(props: OffScreenInProps) {
 
   if (mode === 'hidden') {
     if (resolveRef.current === null) {
-      promiseRef.current = new Promise<void>((resolve) => (resolveRef.current = resolve))
+      promiseRef.current = new Promise<void>(resolve => (resolveRef.current = resolve))
     }
 
     const promise = promiseRef.current!

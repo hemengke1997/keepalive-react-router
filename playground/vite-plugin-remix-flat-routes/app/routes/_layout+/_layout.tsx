@@ -1,6 +1,6 @@
+import { App, Button, Card, Space } from 'antd'
 import { useKeepAlive } from 'keepalive-react-router'
 import { Link, Outlet } from 'react-router-dom'
-import { App, Button, Card, Space } from 'antd'
 import { GlobalStore } from '../../stores/global-store'
 
 export function Component() {
@@ -16,27 +16,29 @@ export function Component() {
   const { message } = App.useApp()
 
   return (
-    <div className={'p-8'}>
-      <div className={'mb-4 flex items-center gap-4'}>
-        <Card title={'配置'}>
+    <div className='p-8'>
+      <div className='mb-4 flex items-center gap-4'>
+        <Card title='配置'>
           <Space>
             <Button
               onClick={() => {
-                setEnableScroll((t) => !t)
+                setEnableScroll(t => !t)
               }}
             >
-              {enableScroll ? '关闭' : '开启'}滚动恢复
+              {enableScroll ? '关闭' : '开启'}
+              滚动恢复
             </Button>
             <Button
               onClick={() => {
-                setEnableTransition((t) => !t)
+                setEnableTransition(t => !t)
               }}
             >
-              {enableTransition ? '关闭' : '开启'}路由动画
+              {enableTransition ? '关闭' : '开启'}
+              路由动画
             </Button>
           </Space>
         </Card>
-        <Card title={'路由跳转'}>
+        <Card title='路由跳转'>
           <Space>
             <Link to='/'>
               <Button>跳转首页</Button>

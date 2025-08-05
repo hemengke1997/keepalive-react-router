@@ -14,7 +14,7 @@ npm install react-transition-preset
 
 In the `KeepAliveOutlet` component, add the `transition` attribute to enable route transition animations.
 
-Once enabled, the default transition effect is `fade-right`.
+Once enabled, the default transition effect is `fade`.
 
 ```tsx
 // root.tsx
@@ -34,7 +34,7 @@ export function Root() {
 `react-transition-preset` comes with built-in common transition effects, making it easy to use.
 
 ```tsx
-<KeepAliveOutlet transition={{ transition: 'fade', duration: 300 }} /> 
+<KeepAliveOutlet transition={{ transition: 'fade', duration: 0.3 }} />
 ```
 
 For more configurations, please refer to [react-transition-preset](https://github.com/hemengke1997/react-transition-preset)

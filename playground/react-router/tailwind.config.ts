@@ -1,7 +1,7 @@
-import { type Config } from 'tailwindcss'
+import type { Config } from 'tailwindcss'
 
 export default {
-  content: ['./app/**/*.{ts,tsx}'],
+  content: ['./src/**/*.{ts,tsx}'],
   darkMode: ['selector', '[data-theme="dark"]'],
   corePlugins: {
     preflight: false,

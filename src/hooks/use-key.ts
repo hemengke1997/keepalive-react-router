@@ -8,7 +8,7 @@ export function useKey() {
   const [key, setKey] = useState(0)
 
   useActivated(() => {
-    setKey((prev) => ~prev)
+    setKey(prev => ~prev)
   })
 
   return key

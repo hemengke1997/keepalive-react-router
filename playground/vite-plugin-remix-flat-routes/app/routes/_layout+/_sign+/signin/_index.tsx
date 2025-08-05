@@ -1,7 +1,7 @@
+import { App, Button, Card, Space } from 'antd'
 import { useActivated, useDeactivated } from 'keepalive-react-router'
 import { useEffect, useState } from 'react'
 import { Outlet } from 'react-router-dom'
-import { App, Button, Card, Space } from 'antd'
 import { GlobalStore } from '../../../../stores/global-store'
 
 export default function Page() {
@@ -29,18 +29,23 @@ export default function Page() {
   }, [])
 
   return (
-    <div className={'min-h-screen'}>
-      <Card title={'登录页 KeepAlive'}>
+    <div className='min-h-screen'>
+      <Card title='登录页 KeepAlive'>
         <Space>
           <Button
             onClick={() => {
               setCount(count + 1)
             }}
           >
-            触发渲染 {count}
+            触发渲染
+            {' '}
+            {count}
           </Button>
 
-          <Button onClick={() => setGlobalCount((t) => t + 1)}>GlobalCount: {globalCount}</Button>
+          <Button onClick={() => setGlobalCount(t => t + 1)}>
+            GlobalCount:
+            {globalCount}
+          </Button>
         </Space>
       </Card>
       <Outlet />

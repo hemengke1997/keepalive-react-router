@@ -1,11 +1,14 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    "lib": ["esnext", "dom"],
     "jsx": "react-jsx",
+    "lib": ["esnext", "dom"],
+    "baseUrl": ".",
     "module": "ESNext",
     "moduleResolution": "node",
-    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
     "esModuleInterop": true
   },
   "exclude": ["node_modules", "dist"]

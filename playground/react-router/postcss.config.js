@@ -1,5 +1,6 @@
-import { definePlugins } from 'postcss-config-preset'
-
 export default {
-  plugins: definePlugins(),
+  plugins: {
+    'tailwindcss/nesting': true,
+    'tailwindcss': true,
+  },
 }

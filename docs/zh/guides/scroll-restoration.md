@@ -11,7 +11,7 @@ export function Root() {
   return (
     <>
       <KeepAliveProvider>
-        <KeepAliveOutlet 
+        <KeepAliveOutlet
           scrollRestoration={
             // 自定义滚动恢复行为
           }

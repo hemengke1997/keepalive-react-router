@@ -14,7 +14,7 @@ npm install react-transition-preset
 
 在 `KeepAliveOutlet` 组件中，添加 `transition` 属性，即可开启路由切换动画。
 
-开启后，默认使用 `fade-right` 过渡效果。
+开启后，默认使用 `fade` 过渡效果。
 
 ```tsx
 // root.tsx
@@ -34,7 +34,7 @@ export function Root() {
 `react-transition-preset` 内置了常用过渡效果，使用方便。
 
 ```tsx
-<KeepAliveOutlet transition={{ transition: 'fade', duration: 300 }} /> 
+<KeepAliveOutlet transition={{ transition: 'fade', duration: 0.3 }} />
 ```
 
 更多配置请查看 [react-transition-preset](https://github.com/hemengke1997/react-transition-preset)

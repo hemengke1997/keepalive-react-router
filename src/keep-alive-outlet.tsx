@@ -1,5 +1,5 @@
-import { type ScrollRestorationProps } from 'react-router-dom'
-import { type TransitionProps } from 'react-transition-preset'
+import type { ScrollRestorationProps } from 'react-router-dom'
+import type { TransitionProps } from 'react-transition-preset/types'
 import { KeepAliveInStore } from './contexts/keep-alive-in'
 import KeepAliveIn from './keep-alive-in'
 import { ScrollRestoration } from './scroll-restoration'

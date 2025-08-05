@@ -3,5 +3,6 @@ import { defineConfig } from 'vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/keepalive-react-router/',
   plugins: [react()],
 })

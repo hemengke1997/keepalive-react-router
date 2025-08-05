@@ -1,8 +1,9 @@
-import { Suspense, useRef } from 'react'
+import type { OffScreenInProps } from './off-screen-in'
 import { useMemoFn } from 'context-state'
+import { Suspense, useRef } from 'react'
 import { useEventListener } from './hooks/use-event-listener'
 import { useIsomorphicLayoutEffect } from './hooks/use-isomorphic-layout-effect'
-import OffScreenIn, { type OffScreenInProps } from './off-screen-in'
+import OffScreenIn from './off-screen-in'
 import { RouteTransition } from './route-transition'
 
 export default function OffScreen(
@@ -29,7 +30,8 @@ export default function OffScreen(
   useIsomorphicLayoutEffect(() => {
     if (mode === 'visible') {
       emitActiveChange()
-    } else if (emitted.current) {
+    }
+    else if (emitted.current) {
       // hidden
       emitActiveChange()
     }
@@ -43,6 +45,7 @@ export default function OffScreen(
 
   return (
     <RouteTransition
+      pathname={pathname}
       mounted={mode === 'visible'}
       transition={{
         keepMounted: true,

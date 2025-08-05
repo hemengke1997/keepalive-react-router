@@ -1,18 +1,19 @@
 import type React from 'react'
+import type { KeepAliveOutletProps } from './keep-alive-outlet'
 import { lazy, Suspense } from 'react'
 import { KeepAliveInStore } from './contexts/keep-alive-in'
-import { type KeepAliveOutletProps } from './keep-alive-outlet'
 import { isObject } from './utils'
 
-const LazyTransition = lazy(() => import('react-transition-preset').then((module) => ({ default: module.Transition })))
+const LazyTransition = lazy(() => import('react-transition-preset').then(module => ({ default: module.Transition })))
 
 export function RouteTransition(props: {
   children: React.ReactNode
   mounted: boolean
   transition: Exclude<KeepAliveOutletProps['transition'], boolean>
+  pathname: string
 }) {
   const { transition } = KeepAliveInStore.useStore(['transition'])
-  const { children, mounted, transition: transitionProps } = props
+  const { children, mounted, transition: transitionProps, pathname } = props
 
   if (!transition) {
     if (transitionProps?.keepMounted) {
@@ -27,8 +28,8 @@ export function RouteTransition(props: {
     <Suspense>
       <LazyTransition
         initial={true}
-        duration={200}
-        transition={'fade-right'}
+        duration={0.2}
+        transition='fade'
         {...transitionInput}
         {...transitionProps}
         onEnter={() => {

@@ -11,7 +11,7 @@ export function Root() {
   return (
     <>
       <KeepAliveProvider>
-        <KeepAliveOutlet 
+        <KeepAliveOutlet
           scrollRestoration={
             // Custom scroll restoration behavior
           }

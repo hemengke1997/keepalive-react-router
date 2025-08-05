@@ -1,6 +1,6 @@
-import { useRef } from 'react'
+import type { MapValue } from 'type-fest/source/entry'
 import { useMemoFn } from 'context-state'
-import { type MapValue } from 'type-fest/source/entry'
+import { useRef } from 'react'
 
 export function useMapRef<T extends Map<string, any>>(initialValue: T) {
   const ref = useRef<T>(initialValue)

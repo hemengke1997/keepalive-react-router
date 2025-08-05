@@ -1,5 +1,5 @@
-import { useLocation } from 'react-router-dom'
 import { useMemoFn } from 'context-state'
+import { useLocation } from 'react-router-dom'
 import { KeepAliveStore } from '../contexts/keep-alive'
 import { ensureArray } from '../utils'
 import { useEventListener } from './use-event-listener'
@@ -25,16 +25,16 @@ export function useKeepAlive() {
     deleteAliveRoutes(pathname)
   })
 
-  const destroyAll = useMemoFn(() => {
-    const diff = getAliveRoutes().filter((t) => t !== pathname)
-    deleteAliveRoutes(diff)
-  })
-
   const getAliveRoutes = useMemoFn(() =>
     Array.from(aliveRoutes.entries())
       .filter(([, route]) => route.shouldKeepAlive)
       .map(([pathname]) => pathname),
   )
+
+  const destroyAll = useMemoFn(() => {
+    const diff = getAliveRoutes().filter(t => t !== pathname)
+    deleteAliveRoutes(diff)
+  })
 
   return {
     destroy,

@@ -1,6 +1,6 @@
-import { useEffect } from 'react'
+import type { ActivityMode } from '../types'
 import { EventEmitter } from 'eventemitter3'
-import { type ActivityMode } from '../types'
+import { useEffect } from 'react'
 
 class KeepAliveEvent extends EventEmitter<Events> {
   private static instance: KeepAliveEvent
@@ -34,7 +34,7 @@ type Events = {
 
 const instance = KeepAliveEvent.getInstance()
 
-export function useEventListener(events?: { on?: Ev<Events>; once?: Ev<Events> }) {
+export function useEventListener(events?: { on?: Ev<Events>, once?: Ev<Events> }) {
   useEffect(() => {
     const hanleEvent = (type: 'on' | 'off') => {
       if (events) {

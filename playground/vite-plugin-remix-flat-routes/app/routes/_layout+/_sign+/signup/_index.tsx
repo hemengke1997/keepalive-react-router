@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react'
 import { App, Button, Card, Space } from 'antd'
+import { useEffect, useState } from 'react'
 import { GlobalStore } from '../../../../stores/global-store'
 
 export default function Page() {
@@ -19,18 +19,23 @@ export default function Page() {
   }, [])
 
   return (
-    <div className={'min-h-screen'}>
-      <Card title={'注册页 非KeepAlive'}>
+    <div className='min-h-screen'>
+      <Card title='注册页 非KeepAlive'>
         <Space>
           <Button
             onClick={() => {
               setCount(count + 1)
             }}
           >
-            触发渲染 {count}
+            触发渲染
+            {' '}
+            {count}
           </Button>
 
-          <Button onClick={() => setGlobalCount((t) => t + 1)}>GlobalCount: {globalCount}</Button>
+          <Button onClick={() => setGlobalCount(t => t + 1)}>
+            GlobalCount:
+            {globalCount}
+          </Button>
         </Space>
       </Card>
     </div>

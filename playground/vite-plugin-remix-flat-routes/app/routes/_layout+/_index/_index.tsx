@@ -1,7 +1,7 @@
+import { App, Button, Card, Modal, Space } from 'antd'
 import { useActivated, useDeactivated } from 'keepalive-react-router'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { App, Button, Card, Modal, Space } from 'antd'
 import LoadMore from '../../../components/load-more'
 import { GlobalStore } from '../../../stores/global-store'
 
@@ -28,30 +28,34 @@ export default function Page() {
   const [modalOpen, setModalOpen] = useState(false)
 
   return (
-    <div className={'min-h-screen'}>
-      <Card title={'首页 KeepAlive'}>
-        <div className={'mb-6 flex gap-2'}>
+    <div className='min-h-screen'>
+      <Card title='首页 KeepAlive'>
+        <div className='mb-6 flex gap-2'>
           <Button
             onClick={() => {
               setCount(count + 1)
             }}
           >
-            触发渲染 {count}
+            触发渲染
+            {' '}
+            {count}
           </Button>
           <Button onClick={() => setModalOpen(true)}>打开modal</Button>
           <Button
             onClick={() => {
-              setGlobalCount((t) => t + 1)
+              setGlobalCount(t => t + 1)
             }}
           >
-            GlobalCount: {globalCount}
+            GlobalCount:
+            {' '}
+            {globalCount}
           </Button>
         </div>
         <LoadMore />
       </Card>
       <Modal
         open={modalOpen}
-        title={'首页'}
+        title='首页'
         onCancel={() => {
           setModalOpen(false)
         }}

@@ -1,6 +1,6 @@
+import { App } from 'antd'
 import { KeepAliveOutlet, KeepAliveProvider } from 'keepalive-react-router'
 import { useRouteError } from 'react-router-dom'
-import { App } from 'antd'
 import { GlobalStore } from './stores/global-store'
 
 function Inner() {

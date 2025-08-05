@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import type { MapValue } from 'type-fest/source/entry'
 import { useMemoFn } from 'context-state'
-import { type MapValue } from 'type-fest/source/entry'
+import { useState } from 'react'
 
 export function useMapState<S extends Map<string, any>>(initialState: S | (() => S)) {
   const [state, setState] = useState(initialState)

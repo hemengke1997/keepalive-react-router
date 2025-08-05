@@ -15,7 +15,8 @@ function KeepAliveIn() {
     for (let i = 0; i < matches.length; i++) {
       const match = matches[i]
       const handle = match.handle as { keepAlive: boolean } | undefined
-      if (!handle) continue
+      if (!handle)
+        continue
       if (handle?.keepAlive) {
         shouldKeepAlive = true
         break
@@ -30,15 +31,17 @@ function KeepAliveIn() {
   return (
     <>
       {Array.from(aliveRoutes).map(([pathname, route]) =>
-        route.shouldKeepAlive ? (
-          <OffScreen key={pathname} pathname={pathname} mode={location.pathname === pathname ? 'visible' : 'hidden'}>
-            {outlet}
-          </OffScreen>
-        ) : (
-          <OnScreen key={pathname} mounted={location.pathname === pathname}>
-            {outlet}
-          </OnScreen>
-        ),
+        route.shouldKeepAlive
+          ? (
+              <OffScreen key={pathname} pathname={pathname} mode={location.pathname === pathname ? 'visible' : 'hidden'}>
+                {outlet}
+              </OffScreen>
+            )
+          : (
+              <OnScreen key={pathname} pathname={pathname} mounted={location.pathname === pathname}>
+                {outlet}
+              </OnScreen>
+            ),
       )}
     </>
   )
