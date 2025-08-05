@@ -1,91 +1,61 @@
-name: Deploy to GitHub Pages
+# Sample workflow for building and deploying a VitePress site to GitHub Pages
+#
+name: Deploy VitePress site to Pages
 
 on:
+  # Runs on pushes targeting the `main` branch. Change this to `master` if you're
+  # using the `master` branch as the default branch.
   push:
     branches: [master]
+
+  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
 concurrency:
   group: pages
   cancel-in-progress: false
 
 jobs:
-  build-and-deploy:
+  # Build job
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Setup Node.js
+      - uses: pnpm/action-setup@v3
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 10.14.0
-
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: Build
-        run: pnpm run build
-
-      - name: Build docs
-        run: pnpm run docs:build
-
-      - name: Build playground
-        run: |
-          cd playground/react-router
-          pnpm run build
-
+          node-version: 20
+          cache: pnpm
       - name: Setup Pages
         uses: actions/configure-pages@v4
-
-      - name: Prepare deployment
-        run: |
-          # 创建部署目录
-          mkdir -p dist
-          # 复制文档到根目录
-          cp -r docs/.vitepress/dist/* dist/
-          # 创建 playground 目录并复制文件
-          mkdir -p dist/playground
-          cp -r playground/react-router/dist/* dist/playground/
-          # 为 playground 创建 404.html 处理 SPA 路由
-          cat > dist/playground/404.html << 'EOF'
-          <!DOCTYPE html>
-          <html>
-          <head>
-              <meta charset="utf-8">
-              <title>Playground</title>
-              <script type="text/javascript">
-                  var pathSegmentsToKeep = 1;
-                  var l = window.location;
-                  l.replace(
-                      l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-                      l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
-                      l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
-                      (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
-                      l.hash
-                  );
-              </script>
-          </head>
-          <body>
-          </body>
-          </html>
-          EOF
-
+      - name: Install dependencies
+        run: pnpm i
+      - name: Build with VitePress
+        run: npm run docs:build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: docs/.vitepress/dist
 
+  # Deployment job
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    needs: build
+    runs-on: ubuntu-latest
+    name: Deploy
+    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
