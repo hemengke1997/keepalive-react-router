@@ -12,7 +12,7 @@
     "ahooks": "^3.9.0",
     "antd": "^5.26.7",
     "context-state": "^4.0.1",
-    "keepalive-react-router": "workspace:*",
+    "keepalive-react-router": "latest",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "6.27.0",

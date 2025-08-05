@@ -1,7 +1,0 @@
-{
-  "buildCommand": "pnpm build",
-  "outputDirectory": "dist",
-  "framework": "vite",
-  "installCommand": "pnpm install",
-  "devCommand": "pnpm dev"
-}
